@@ -90,3 +90,31 @@ body {
   background-color: #9bbdf2;
   cursor: not-allowed;
 }
+.option-btn {
+  display: block;
+  padding: 10px 15px;
+  margin: 10px 0;
+  border: none;
+  border-radius: 5px;
+  background-color: #e0e0e0;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+.option-btn:hover {
+  background-color: #d4d4d4;
+}
+#start-screen {
+  margin-bottom: 20px;
+  padding: 15px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  background-color: #f8f8f8;
+}
+
+#topic-select,
+#start-btn {
+  padding: 10px;
+  font-size: 16px;
+  margin-top: 10px;
+}
