@@ -21,7 +21,7 @@ Quiz Web App is a simple, client-side web application that allows users to take 
 ## Project Structure (Key Files)
 
 * `index.html` (or your main HTML file, e.g., `test_quiz_app_html`): The main entry point of the application.
-* `uid-manager.js`: Handles generation and retrieval of UIDs using browser cookies.
+* `authentication.js`: Handles generation and retrieval of UIDs using browser cookies.
     * `getCookie(name)`
     * `setCookie(name, value, days)`
     * `generateUUID()`
@@ -67,12 +67,12 @@ Quiz Web App is a simple, client-side web application that allows users to take 
     * If you encounter Firestore errors related to missing indexes, the error message in your browser's developer console will usually provide a direct link to create the required index in your Firebase console. Follow that link and create the index. For example, the `getUserTopScore` function requires an index on the `scores` collection for fields `uid` (Ascending), `category` (Ascending), and `score` (Descending).
 
 5.  **Open in Browser:**
-    * Open the main HTML file (e.g., `index.html` or `test_quiz_app_html`) in your web browser to run the application.
+    * Open the main HTML file `index.html` in your web browser to run the application.
 
 ## UID Management
 
 This application uses a simple client-side UID generation and persistence mechanism:
-* When a user first visits, a UUID is generated using functions in `uid-manager.js`.
+* When a user first visits, a UUID is generated using functions in `authentication.js`.
 * This UID is then stored in a browser cookie (e.g., `quizAppUserUID`) with a long expiry (e.g., 365 days).
 * On subsequent visits, the UID is retrieved from the cookie.
 * This UID is used to associate Firestore data (like fetched questions and scores) with a specific browser instance.
