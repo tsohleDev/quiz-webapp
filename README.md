@@ -108,7 +108,6 @@ The `database-client.js` file manages all interactions with Firebase Firestore. 
 
 * **Secure Authentication:**  Replacing the custom cookie UID system with Firebase Authentication. This would provide actual user accounts, secure identity verification, and allow for more granular security rules in Firestore based on `request.auth.uid`.
 * **Error Handling & UI:** Enhance UI feedback for all operations and improve error display.
-* **Modular JavaScript:** Using ES6 modules for better code organization instead of relying on global functions.
 
 
 
