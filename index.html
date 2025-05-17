@@ -9,18 +9,16 @@
   <body>
     <div class="quiz-container">
       <h1 class="quiz-title">Tech Whiz Quiz</h1>
-      <h2 class="quiz-subtitle">Computing Fundamentals</h2>
-      <p class="question-info">Question 1 of 10</p>
-      <p class="score">Score: 0</p>
+      <h2 class="quiz-subtitle">Web Development</h2>
+      <p class="question-info" id="question-number">Question 1 of 50</p>
+      <p class="score" id="score">Score: 0</p>
       <div class="question-box">
-        <p class="question-text">Example Question?</p>
-        <div class="options">
-          <button class="option-btn">header</button>
-          <button class="option-btn">*header</button>
-          <button class="option-btn">#header</button>
-          <button class="option-btn">.header</button>
-        </div>
+        <p class="question-text" id="question-text">ExampleQuestion</p>
+        <div class="options" id="options-container"></div>
+        <button id="next-btn" class="next-btn" disabled>Next Question</button>
       </div>
     </div>
+
+    <script src="script.js" defer></script>
   </body>
 </html>
