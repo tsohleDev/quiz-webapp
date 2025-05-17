@@ -71,3 +71,5 @@ function getUid() {
         return uid;
     }
 }
+
+export { getUid };

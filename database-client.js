@@ -1,31 +1,26 @@
-// database.js
-// This script assumes 'firebaseConfig' is already defined (e.g., by firebase-keys.js)
-// and that the Firebase SDKs (app, firestore) are already loaded.
 
-let db; // Declare db in a scope accessible by all functions
+import { firebaseConfig } from './firebase-keys.js';
+
+let db;
 
 if (typeof firebaseConfig === 'undefined') {
     console.error(
         "Firebase configuration object 'firebaseConfig' is not found. " +
         "Ensure 'firebase-keys.js' is correctly set up and loaded before this script."
     );
-    // db will remain undefined, and functions will return an error status.
 } else {
     try {
-        // Initialize Firebase App only if it hasn't been initialized yet.
-        // The compat libraries often handle this, but this is a safeguard.
         if (!firebase.apps.length) {
             firebase.initializeApp(firebaseConfig);
             console.log("Firebase initialized successfully in database.js.");
         } else {
-            firebase.app(); // if already initialized, use that one
+            firebase.app();
             console.log("Firebase was already initialized when database.js loaded.");
         }
-        db = firebase.firestore(); // Initialize Firestore
+        db = firebase.firestore();
         console.log("Firestore initialized successfully in database.js.");
     } catch (e) {
         console.error("Error initializing Firebase or Firestore in database.js:", e);
-        // db might be undefined or not correctly initialized.
     }
 }
 
@@ -325,11 +320,4 @@ async function getUserTopScore(uid, category) {
     }
 }
 
-// Make functions globally accessible if needed by other scripts (e.g., your inline script in HTML)
-// This is common in simpler setups without module bundlers.
-if (typeof window !== 'undefined') {
-    window.updateQuestions = updateQuestions;
-    window.getQuestions = getQuestions;
-    window.addScore = addScore;
-    window.getUserTopScore = getUserTopScore;
-}
+export { updateQuestions, getQuestions, addScore, getUserTopScore };
