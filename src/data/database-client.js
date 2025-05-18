@@ -320,4 +320,60 @@ async function getUserTopScore(uid, category) {
     }
 }
 
-export { updateQuestions, getQuestions, addScore, getUserTopScore };
+/**
+ * Retrieves all unique quiz categories from the scores collection.
+ * @returns {Promise<Object>} { status: 'success', data: string[] } or { status: 'error', message: string }
+ */
+async function getQuizCategories() {
+    if (!db) return { status: 'error', message: 'Database not initialized.' };
+    try {
+        const scoresSnapshot = await db.collection('scores').get();
+        const categories = new Set();
+        scoresSnapshot.forEach(doc => {
+            if (doc.data().category) {
+                categories.add(doc.data().category);
+            }
+        });
+        return { status: 'success', data: Array.from(categories) };
+    } catch (error) {
+        console.error("Error fetching quiz categories:", error);
+        return { status: 'error', message: 'Could not retrieve quiz categories.' };
+    }
+}
+
+/**
+ * Retrieves global top scores, optionally filtered by category.
+ * @param {Object} options - Options object.
+ * @param {string} [options.category] - Optional category to filter by.
+ * @param {number} [options.limit=20] - Number of scores to retrieve.
+ * @returns {Promise<Object>} { status: 'success', data: ScoreObject[] } or { status: 'error', message: string }
+ * ScoreObject should include uid, score, category, timestamp, and potentially displayName.
+ */
+async function getGlobalTopScores({ category, limit = 20 } = {}) {
+    if (!db) return { status: 'error', message: 'Database not initialized.' };
+    try {
+        let query = db.collection('scores');
+
+        if (category) {
+            query = query.where('category', '==', category);
+        }
+
+        query = query.orderBy('score', 'desc').orderBy('timestamp', 'desc').limit(limit);
+
+        const snapshot = await query.get();
+        const scores = [];
+        snapshot.forEach(doc => {
+            // Here, you might want to fetch user display names based on doc.data().uid
+            // For now, just return the data as is or add a placeholder.
+            // This example assumes 'displayName' might already be on the score document or fetched separately.
+            // If not, the frontend logic will handle the UID.
+            scores.push({ id: doc.id, ...doc.data() });
+        });
+        return { status: 'success', data: scores };
+    } catch (error) {
+        console.error("Error fetching global top scores:", error);
+        return { status: 'error', message: 'Could not retrieve top scores.' };
+    }
+}
+
+export { updateQuestions, getQuestions, addScore, getQuizCategories, getGlobalTopScores, getUserTopScore };

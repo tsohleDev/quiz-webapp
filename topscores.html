@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tech Quiz - Top Scores</title>
+    <link rel="stylesheet" href="src/asset/stylesheets/index.css"> <!-- Using index.css for base styles -->
+    <link rel="stylesheet" href="src/asset/stylesheets/topscore.css"> <!-- Specific styles for this page -->
+</head>
+
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="nav-logo">
+                <a href="index.html">Logo</a> <!-- Placeholder for logo -->
+            </div>
+            <button class="hamburger-menu" aria-label="Toggle navigation menu" aria-expanded="false">
+                <span class="line"></span>
+                <span class="line"></span>
+                <span class="line"></span>
+            </button>
+            <div class="nav-menu">
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="quiz.html">Quiz</a></li>
+                    <li><a href="topscores.html" class="active">Top Score</a></li>
+                </ul>
+                <div class="nav-admin">
+                    <a href="admin.html" class="btn-admin-nav">Admin</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main id="top-scores-page">
+        <section id="top-scores-view" class="view active">
+            <h1>Top Scores</h1>
+            <div class="score-filters">
+                <label for="category-filter">Filter by Category:</label>
+                <select id="category-filter">
+                    <option value="all">All Categories</option>
+                    <!-- Categories will be populated here by JavaScript -->
+                </select>
+            </div>
+            <div id="scores-list-container">
+                <p id="loading-scores-message">Loading top scores...</p>
+                <ul id="scores-list"></ul>
+                <p id="no-scores-message" style="display:none;">No top scores found for the selected filter.</p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p><a href="index.html" class="back">Back to Home</a></p>
+        <p>© 2024 Tech Quiz App</p>
+    </footer>
+
+    <!-- Firebase SDKs -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+
+
+    <!-- Application Logic -->
+    <script type="module" src="src/data/authentication.js"></script>
+    <script type="module" src="src/data/database-client.js"></script>
+    <script type="module" src="src/quiz/topscores-logic.js"></script>
+
+</body>
+
+</html>
