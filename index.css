@@ -1,0 +1,126 @@
+/* Basic Reset and Full Height Setup */
+html,
+body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    /* Make html and body take full height */
+    font-family: Arial, Helvetica, sans-serif;
+    /* Example font */
+    box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+}
+
+/* Main container will be our Grid Container */
+main#login-page-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    /* Two columns of equal width (50% each) */
+    /* Alternatively: grid-template-columns: 50% 50%; */
+    width: 100vw;
+    /* Fill the entire viewport width */
+    height: 100vh;
+    /* Fill the entire viewport height */
+    overflow: hidden;
+    /* Prevents scrollbars if content slightly overflows */
+}
+
+/* First section (image container) - occupies the first grid column */
+section.login-flex-row {
+    /* This section will automatically be placed in the first grid cell. */
+    /* We need to ensure its content (the image) fills it. */
+    display: flex;
+    /* Optional: if you wanted to center the image, but object-fit does it */
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    /* In case image is slightly larger before object-fit */
+}
+
+/* Image Styling */
+section.login-flex-row img.logo {
+    width: 100%;
+    /* Fill the width of its parent section (the grid cell) */
+    height: 100%;
+    /* Fill the height of its parent section (the grid cell) */
+    object-fit: cover;
+    /* Ensures the image covers the area without distortion, cropping if necessary */
+    object-position: center;
+    /* Center the image within its container */
+}
+
+/* Second section (login buttons container) - occupies the second grid column */
+section.login-btns-col {
+    /* This section will automatically be placed in the second grid cell. */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* Vertically center the content in this column */
+    align-items: center;
+    /* Horizontally center the content in this column */
+    padding: 20px 40px;
+    /* Add some padding */
+    background-color: #f4f4f4;
+    /* Optional: give the right side a background */
+    text-align: center;
+    /* Center text for h1, h2 */
+}
+
+section.login-btns-col h1 {
+    font-size: 2.5em;
+    margin-bottom: 0.5em;
+    color: #333;
+}
+
+section.login-btns-col h2 {
+    font-size: 1.5em;
+    margin-bottom: 1.5em;
+    color: #555;
+}
+
+.btn-user,
+.btn-admin {
+    display: inline-block;
+    padding: 12px 25px;
+    margin: 10px 0;
+    text-decoration: none;
+    color: white;
+    border-radius: 5px;
+    font-size: 1.1em;
+    min-width: 180px;
+    /* Ensure buttons have a decent width */
+    transition: background-color 0.3s ease;
+}
+
+.btn-user {
+    background-color: #007bff;
+}
+
+.btn-user:hover {
+    background-color: #0056b3;
+}
+
+.btn-admin {
+    background-color: #28a745;
+}
+
+.btn-admin:hover {
+    background-color: #1e7e34;
+}
+
+/* Optional: Minimal styling for footer if it exists outside the main grid */
+footer {
+    padding: 10px;
+    background-color: #333;
+    color: white;
+    text-align: center;
+    /* If the footer is intended to be below the 100vh login area,
+       it might get pushed off-screen or cause a scrollbar depending
+       on how body overflow is handled. For a true full-screen login,
+       the footer is often omitted or placed differently. */
+}

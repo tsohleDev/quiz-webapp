@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tech Quiz - Select Category</title>
+    <link rel="stylesheet" href="quiz.css">
+</head>
+
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="nav-logo">
+                <a href="index.html">Logo</a>
+            </div>
+
+            <button class="hamburger-menu" aria-label="Toggle navigation menu" aria-expanded="false">
+                <span class="line"></span>
+                <span class="line"></span>
+                <span class="line"></span>
+            </button>
+
+            <div class="nav-menu">
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="quiz.html">Quiz</a></li>
+                    <li><a href="topscores.html">Top Score</a></li>
+                </ul>
+                <div class="nav-admin">
+                    <a href="admin.html" class="btn-admin-nav">Admin</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main id="landing-page">
+        <section id="category-selection-view" class="view active">
+            <h1>Tech Whiz Quiz</h1>
+            <h2>Choose a Category to Start</h2>
+            <div>
+                <ul id="category-list">
+                    <li><button class="category-btn" data-category="javascript">JavaScript Fundamentals</button></li>
+                    <li><button class="category-btn" data-category="html-css">HTML & CSS Basics</button></li>
+                    <li><button class="category-btn" data-category="git">Git & Version Control</button></li>
+                </ul>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p><a href="index.html" class="back">Back to Home</a></p>
+        <p>© 2024 Tech Quiz App</p>
+    </footer>
+    <script>
+        const hamburgerMenu = document.querySelector('.hamburger-menu');
+        const navMenu = document.querySelector('.nav-menu');
+
+        if (hamburgerMenu && navMenu) {
+            hamburgerMenu.addEventListener('click', () => {
+                navMenu.classList.toggle('open');
+                const isOpen = navMenu.classList.contains('open');
+                hamburgerMenu.setAttribute('aria-expanded', isOpen.toString());
+                // Toggle 'open' on hamburger for its own X animation
+                hamburgerMenu.classList.toggle('open', isOpen);
+            });
+        } else {
+            console.error("Hamburger menu or nav menu container not found!");
+        }
+
+        // JavaScript for category selection
+        const categoryButtons = document.querySelectorAll('.category-btn');
+        categoryButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const category = button.dataset.category;
+                localStorage.setItem('selectedQuizCategory', category);
+                window.location.href = 'quiz.html';
+            });
+        });
+    </script>
+</body>
+
+</html>
