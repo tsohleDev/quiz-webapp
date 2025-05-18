@@ -1,0 +1,134 @@
+html,
+body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: Arial, Helvetica, sans-serif;
+    box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+}
+
+main#login-page-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
+
+section.login-flex-row {
+    
+    display: flex;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+section.login-flex-row img.logo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+section.login-btns-col {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 40px;
+    background-color: #f4f4f4;
+    text-align: center;
+}
+
+section.login-btns-col h1 {
+    font-size: 2.5em;
+    margin-bottom: 0.5em;
+    color: #333;
+}
+
+section.login-btns-col h2 {
+    font-size: 1.5em;
+    margin-bottom: 1.5em;
+    color: #555;
+}
+
+.btn-user,
+.btn-admin {
+    display: inline-block;
+    padding: 12px 25px;
+    margin: 10px 0;
+    text-decoration: none;
+    color: white;
+    border-radius: 5px;
+    font-size: 1.1em;
+    min-width: 180px;
+    transition: background-color 0.3s ease;
+}
+
+.btn-user {
+    background-color: #007bff;
+}
+
+.btn-user:hover {
+    background-color: #0056b3;
+}
+
+.btn-admin {
+    background-color: #28a745;
+}
+
+.btn-admin:hover {
+    background-color: #1e7e34;
+}
+
+.logo {
+    width: 10%;
+    height: auto;
+}
+
+
+footer {
+    padding: 10px;
+    background-color: #333;
+    color: white;
+    text-align: center;
+}
+
+@media (max-width: 700px) {
+    main#login-page-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100vw;
+        height: auto;
+        min-height: 100vh;
+        padding: 0;
+    }
+
+    section.login-flex-row {
+        width: 100%;
+        height: auto;
+        justify-content: center;
+        align-items: flex-start;
+        margin-bottom: 16px;
+        order: -1; 
+    }
+
+    .logo-main {
+        width: 100%;
+        width: 80vw;
+        margin: 24px auto 8px auto;
+        display: block;
+    }
+
+    section.login-btns-col {
+        width: 100%;
+        padding: 16px 8px;
+    }
+}
