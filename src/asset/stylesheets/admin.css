@@ -1,0 +1,246 @@
+body {
+  background-color: #ffffff;
+  font-family: 'Arial', sans-serif;
+  color: #333;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar .nav-links .category-button {
+  background-color: transparent;
+  border: none;
+  color: #555;
+  padding: 8px 12px;
+  font-size: 0.95em;
+  font-weight: 500;
+  cursor: pointer;
+  transition: color 0.3s ease, border-color 0.3s ease;
+  text-align: center;
+  border-radius: 4px;
+  margin: 0 5px;
+}
+
+.navbar .nav-links .category-button:hover {
+  color: #3498db;
+}
+
+.navbar .nav-links .category-button.active {
+  color: #3498db;
+  font-weight: 600;
+  background-color: #eaf5fb;
+  border: 1px solid #3498db;
+}
+
+.questions-icon-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 25px;
+  padding: 20px;
+  margin-top: 20px;
+  margin-bottom: 30px;
+}
+
+.questions-container {
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  padding: 25px;
+  width: 100%;
+  max-width: 800px;
+  box-sizing: border-box;
+
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+}
+
+.questions-container .textbox {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.questions-container label {
+  color: #333;
+  font-weight: 600;
+  font-size: 0.9em;
+  margin-bottom: 0;
+}
+
+.questions-container input[type="text"],
+.questions-container select {
+  font-weight: 500;
+  border-radius: 5px;
+  padding: 10px 12px;
+  width: 100%;
+  border: 1px solid #ced4da;
+  box-sizing: border-box;
+  font-size: 0.95em;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.questions-container input[type="text"]:focus,
+.questions-container select:focus {
+  border-color: #3498db;
+  box-shadow: 0 0 0 0.2rem rgba(52, 152, 219, 0.25);
+  outline: none;
+}
+
+.delete-wrapper {
+  margin-top: 10px;
+  text-align: right;
+}
+
+.delete-icon {
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+  opacity: 0.7;
+  transition: opacity 0.2s ease;
+}
+
+.delete-icon:hover {
+  opacity: 1;
+}
+
+.icon-container {
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.add-icon {
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  transition: transform 0.2s ease, filter 0.2s ease;
+}
+
+.add-icon:hover {
+  transform: scale(1.1);
+  filter: brightness(0.9);
+}
+
+#loading-questions-message,
+#no-questions-message,
+#error-questions-message {
+  text-align: center;
+  padding: 15px;
+  border-radius: 5px;
+  margin: 10px 0;
+  font-size: 1em;
+  width: 100%;
+  max-width: 800px;
+  box-sizing: border-box;
+}
+
+#loading-questions-message {
+  color: #555;
+}
+
+#no-questions-message {
+  background-color: #fff3cd;
+  border: 1px solid #ffeeba;
+  color: #856404;
+}
+
+#error-questions-message {
+  background-color: #f8d7da;
+  border: 1px solid #f5c6cb;
+  color: #721c24;
+}
+
+@media screen and (min-width: 769px) {
+  .questions-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    grid-template-areas:
+      "qtext   qtext"
+      "opt1    opt2"
+      "opt3    opt4"
+      "ans     ans"
+      "del     del";
+  }
+
+  .questions-container .quesion-textbox {
+    grid-area: qtext;
+  }
+
+  .questions-container .option1-textbox {
+    grid-area: opt1;
+  }
+
+  .questions-container .option2-textbox {
+    grid-area: opt2;
+  }
+
+  .questions-container .option3-textbox {
+    grid-area: opt3;
+  }
+
+  .questions-container .option4-textbox {
+    grid-area: opt4;
+  }
+
+  .questions-container .answer-dropdown {
+    grid-area: ans;
+  }
+
+  .questions-container .delete-wrapper {
+    grid-area: del;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .questions-icon-container {
+    margin-top: 10px;
+    padding: 15px;
+  }
+
+  .questions-container {
+    padding: 20px;
+  }
+
+  .navbar .nav-links .category-button {
+    font-size: 0.9em;
+    padding: 8px 10px;
+    margin: 0 3px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .questions-container {
+    padding: 15px;
+  }
+
+  .questions-container input[type="text"],
+  .questions-container select {
+    padding: 8px 10px;
+    font-size: 0.9em;
+  }
+
+  .delete-icon {
+    width: 22px;
+    height: 22px;
+  }
+
+  .add-icon {
+    width: 35px;
+    height: 35px;
+  }
+
+  .navbar .nav-links {
+    align-items: stretch;
+  }
+
+  .navbar .nav-links .category-button {
+    width: calc(100% - 10px);
+    margin: 5px;
+    display: block;
+    box-sizing: border-box;
+  }
+}

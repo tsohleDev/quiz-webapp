@@ -1,5 +1,5 @@
 import { shuffleArray } from './utils.js';
-import { getUid } from '../data/authentication.js'; // Make sure getUid() is implemented and returns the user's ID
+import { getUid } from '../data/authentication.js';
 import { getQuestions } from '../data/database-client.js';
 
 // Hamburger Menu Logic
@@ -14,7 +14,6 @@ if (hamburgerMenu && navMenu) {
         hamburgerMenu.classList.toggle('open', isOpen);
     });
 } else {
-    // Only log an error if we are on the landing page and these elements are expected
     if (document.getElementById('landing-page')) {
         console.error("Hamburger menu (.hamburger-menu) or navigation menu (.nav-menu) not found in index.html!");
     }
@@ -35,7 +34,6 @@ categoryButtons.forEach(button => {
         const uid = getUid();
         if (!uid) {
             console.error('User ID not available. Cannot fetch questions.');
-            // You might want to redirect to a login page or show a more prominent message
             alert('You need to be logged in to start a quiz.');
             return;
         }
@@ -88,12 +86,3 @@ categoryButtons.forEach(button => {
         }
     });
 });
-
-/**
- * Important Note:
- * The actual quiz playing logic (displaying questions, options, timer,
- * handling answers, calculating score, and saving the score using `addScore`
- * from `database-client.js`) should be implemented in a separate JavaScript file.
- * This new script should be linked to `quiz.html` and will read
- * 'selectedQuizCategory' and 'quizQuestions' from `localStorage` to run the quiz.
- */

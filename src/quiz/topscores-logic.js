@@ -6,7 +6,6 @@ const categoryFilterSelect = document.getElementById('category-filter');
 const scoresListUl = document.getElementById('scores-list'); // Will display the single score item
 const loadingScoresMessage = document.getElementById('loading-scores-message');
 const noScoresMessage = document.getElementById('no-scores-message');
-// const scoresListContainer = document.getElementById('scores-list-container'); // Parent div
 
 const hamburgerMenu = document.querySelector('.hamburger-menu');
 const navMenu = document.querySelector('.nav-menu');
@@ -140,19 +139,5 @@ function renderUserTopScore(scoreEntry, categoryContext) {
         dateSpan.textContent = 'Date: N/A';
     }
     listItem.appendChild(dateSpan);
-
-    // The original spans for player-name and score-category might be redundant
-    // if the titleSpan covers the category and it's known to be the user's score.
-    // If you still want them:
-    // const nameSpan = document.createElement('span');
-    // nameSpan.classList.add('player-name');
-    // nameSpan.textContent = scoreEntry.displayName || 'Your Score';
-    // listItem.appendChild(nameSpan);
-
-    // const categorySpan = document.createElement('span');
-    // categorySpan.classList.add('score-category');
-    // categorySpan.textContent = scoreEntry.category || categoryContext;
-    // listItem.appendChild(categorySpan);
-
     scoresListUl.appendChild(listItem);
 }
