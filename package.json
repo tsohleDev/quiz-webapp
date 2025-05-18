@@ -1,0 +1,16 @@
+{
+  "name": "quiz-webapp",
+  "version": "1.0.0",
+  "description": "A quiz web app for software engineers using vanilla html, css and javascript",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start:server": "json-server --watch db.json --port 3000"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "json-server": "^1.0.0-beta.3"
+  }
+}

@@ -56,39 +56,6 @@
 
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
-    <!-- <script>
-        // JavaScript for hamburger menu functionality
-        const hamburgerMenu = document.querySelector('.hamburger-menu');
-        const navMenu = document.querySelector('.nav-menu'); // This is the element to toggle
-
-        if (hamburgerMenu && navMenu) {
-            hamburgerMenu.addEventListener('click', () => {
-                navMenu.classList.toggle('open'); // Toggle 'open' on the .nav-menu
-                const isOpen = navMenu.classList.contains('open');
-                hamburgerMenu.setAttribute('aria-expanded', isOpen.toString());
-                // Toggle 'open' on hamburger for its own X animation
-                hamburgerMenu.classList.toggle('open', isOpen);
-            });
-        } else {
-            console.error("Hamburger menu or nav menu container not found!");
-        }
-
-        // JavaScript for category selection
-        // const categoryButtons = document.querySelectorAll('.category-btn');
-        // categoryButtons.forEach(button => {
-        //     button.addEventListener('click', () => {
-        //         const category = button.dataset.category;
-        //         // Option 1: Store in localStorage and redirect
-        //         localStorage.setItem('selectedQuizCategory', category);
-        //         window.location.href = 'quiz.html';
-
-        //         // Option 2: Redirect with query parameter
-        //         // window.location.href = `quiz.html?category=${category}`;
-
-        //         // console.log(`Selected category: ${category}`); // For testing
-        //     });
-        // });
-    </script> -->
     <script type="module" src="src/quiz/main.js"></script>
 
 </body>
