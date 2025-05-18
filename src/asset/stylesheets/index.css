@@ -10,6 +10,17 @@ body {
     box-sizing: border-box;
 }
 
+.name-input{
+    padding: 10px 15px;
+    border-radius: 10px;
+}
+
+#startQuizBtn{
+    padding: 10px 15px;
+    border-radius: 10px;
+
+}
+
 .navbar>.nav-links,
 .navbar>.nav-admin {
     display: none;
