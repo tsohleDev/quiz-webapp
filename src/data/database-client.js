@@ -148,7 +148,7 @@ async function getQuestions(uid, categoryKey) {
 
             let initData;
             try {
-                const response = await fetch('./init-data.json'); // Ensure this path is correct
+                const response = await fetch('src/data/init-data.json'); // Ensure this path is correct
                 if (!response.ok) {
                     throw new Error(`HTTP error! status: ${response.status}, message: ${response.statusText}`);
                 }

@@ -1,405 +1,519 @@
-        /* Global styles for landing.html */
-        body {
-            font-family: 'Arial', sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f0f2f5;
-            /* Light grey background */
-            color: #333;
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-            /* Ensure body takes at least full viewport height */
-            box-sizing: border-box;
-        }
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    background-color: #fff;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    box-sizing: border-box;
+}
 
-        /* --- Navbar Styles --- */
+main#quiz-page {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 20px;
+    width: 100%;
+    box-sizing: border-box;
+}
 
-        /* Fallback: If .nav-links or .nav-admin are direct children of .navbar
-                    (i.e., not wrapped in .nav-menu as intended by the main layout rules),
-                    hide them. The main navbar styling below relies on the .nav-menu wrapper
-                    for both desktop layout and mobile hamburger functionality. */
-        .navbar>.nav-links,
-        .navbar>.nav-admin {
-            display: none;
-        }
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #ffffff;
+    padding: 12px 25px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    color: #333;
+    position: relative;
+    width: 100%;
+    box-sizing: border-box;
+    z-index: 1000;
+}
 
-        .navbar {
-            display: flex;
-            align-items: center;
-            /* Vertically align items */
-            justify-content: space-between;
-            /* Ensures hamburger is on the far right on mobile */
-            background-color: #ffffff;
-            padding: 12px 25px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            color: #333;
-            position: relative;
-            /* For positioning the mobile menu */
-        }
+.nav-logo a {
+    color: #3498db;
+    text-decoration: none;
+    font-size: 1.6em;
+    font-weight: bold;
+    flex-shrink: 0;
+}
 
-        .nav-logo a {
-            color: #3498db;
-            text-decoration: none;
-            font-size: 1.6em;
-            font-weight: bold;
-            flex-shrink: 0;
-            /* Prevent logo from shrinking */
-        }
+.hamburger-menu {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: 1001;
+    order: 3;
+}
 
-        /* Hamburger Menu Button - Hidden on Desktop by default by .nav-menu presence */
-        .hamburger-menu {
-            display: none;
-            /* Hidden by default, shown in media query */
-            background: none;
-            border: none;
-            cursor: pointer;
-            padding: 0;
-            z-index: 1001;
-            /* Ensure it's above other nav content */
-            order: 3;
-            /* Ensures it's to the right of .nav-menu on mobile if needed, but justify-content on .navbar is better */
-        }
+.hamburger-menu .line {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background-color: #333;
+    margin: 5px 0;
+    transition: all 0.3s ease-in-out;
+}
 
-        .hamburger-menu .line {
-            display: block;
-            width: 25px;
-            height: 3px;
-            background-color: #333;
-            margin: 5px 0;
-            transition: all 0.3s ease-in-out;
-        }
+.hamburger-menu.open .line:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+}
 
-        /* Hamburger animation to 'X' when open */
-        .hamburger-menu.open .line:nth-child(1) {
-            transform: translateY(8px) rotate(45deg);
-        }
+.hamburger-menu.open .line:nth-child(2) {
+    opacity: 0;
+}
 
-        .hamburger-menu.open .line:nth-child(2) {
-            opacity: 0;
-        }
+.hamburger-menu.open .line:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+}
 
-        .hamburger-menu.open .line:nth-child(3) {
-            transform: translateY(-8px) rotate(-45deg);
-        }
+.nav-menu {
+    display: flex;
+    align-items: center;
+    flex-grow: 1;
+}
 
+.nav-menu .nav-links {
+    list-style: none;
+    padding: 0;
+    margin: 0 auto;
+    display: flex;
+    gap: 25px;
+}
 
-        /* Container for links and admin button */
-        /* For Desktop: .nav-menu will contain the links (centered) and admin button (right) */
-        .nav-menu {
-            display: flex;
-            align-items: center;
-            flex-grow: 1;
-            /* Allows .nav-menu to take available space */
-            /* No gap here, auto margins will handle spacing of its children */
-        }
+.nav-menu .nav-links li a {
+    color: #555;
+    text-decoration: none;
+    font-size: 1em;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
 
-        /* Styles for .nav-links when it's a child of .nav-menu */
-        .nav-menu .nav-links {
-            list-style: none;
-            padding: 0;
-            margin: 0 auto;
-            /* This centers the .nav-links block within .nav-menu */
-            display: flex;
-            gap: 25px;
-            /* Space between individual links */
-        }
+.nav-menu .nav-links li a:hover,
+.nav-menu .nav-links li a.active {
+    color: #3498db;
+}
 
-        .nav-menu .nav-links li a {
-            color: #555;
-            text-decoration: none;
-            font-size: 1em;
-            font-weight: 500;
-            transition: color 0.3s ease;
-        }
+.nav-menu .nav-admin {
+    margin-left: auto;
+    flex-shrink: 0;
+}
 
-        .nav-menu .nav-links li a:hover,
-        .nav-menu .nav-links li a.active {
-            color: #3498db;
-        }
+.btn-admin-nav {
+    background-color: #3498db;
+    color: white;
+    padding: 10px 18px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 0.95em;
+    font-weight: 500;
+    transition: background-color 0.3s ease;
+}
 
-        /* Styles for .nav-admin when it's a child of .nav-menu */
-        .nav-menu .nav-admin {
-            margin-left: auto;
-            /* Pushes the admin button to the far right of .nav-menu */
-            flex-shrink: 0;
-            /* Prevent admin button area from shrinking */
-        }
+.btn-admin-nav:hover {
+    background-color: #2980b9;
+}
 
-        .btn-admin-nav {
-            /* General style for the admin button link itself */
-            background-color: #3498db;
-            color: white;
-            padding: 10px 18px;
-            text-decoration: none;
-            border-radius: 5px;
-            font-size: 0.95em;
-            font-weight: 500;
-            transition: background-color 0.3s ease;
-        }
+.navbar>.nav-links,
+.navbar>.nav-admin {
+    display: none;
+}
 
-        .btn-admin-nav:hover {
-            background-color: #2980b9;
-        }
+#quiz-container,
+#results-container {
+    padding: 30px 40px;
+    border-radius: 8px;
+    width: 100%;
+    text-align: left;
+}
 
-        /* --- Main Content Styles --- */
-        #landing-page {
-            flex-grow: 1;
-            text-align: center;
-            display: flex;
-            flex-direction: column;
-        }
+h1#quiz-topic-display {
+    font-size: 1.5em;
+    font-weight: 600;
+    color: #007bff;
+    margin-top: 0;
+    margin-bottom: 25px;
+    text-align: left;
+}
 
-        #category-selection-view {
-            background-color: #ffffff;
-            padding: 35px 30px;
-            border-radius: 0;
-            box-shadow: none;
-            width: 100%;
-            box-sizing: border-box;
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-        }
+p#question-number {
+    font-size: 1.1em;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 5px;
+}
 
-        #category-selection-view h1 {
-            color: #2c3e50;
-            margin-top: 0;
-            margin-bottom: 15px;
-            font-size: 2.4em;
-        }
+h2#question-text {
+    font-size: 1.3em;
+    color: #212529;
+    margin-top: 0;
+    margin-bottom: 30px;
+    line-height: 1.5;
+}
 
-        #category-selection-view h2 {
-            color: #34495e;
-            margin-bottom: 30px;
-            font-size: 1.5em;
-            font-weight: 400;
-        }
+#options-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    margin-bottom: 30px;
+}
 
-        #category-selection-view>div {
-            /* This div wraps ul#category-list */
-            margin-top: 20px;
-            width: 100%;
-            max-width: 500px;
-        }
+.option-btn {
+    background-color: #e9ecef;
+    color: #495057;
+    border: 1px solid #ced4da;
+    padding: 15px 20px;
+    border-radius: 6px;
+    font-size: 1em;
+    text-align: left;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out, border-color 0.2s ease-in-out, color 0.2s ease-in-out;
+    word-wrap: break-word;
+}
 
-        #category-list {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-            display: flex;
-            flex-direction: column;
-            gap: 18px;
-        }
+.option-btn:hover {
+    background-color: #dee2e6;
+    border-color: #adb5bd;
+}
 
-        #category-list li {
-            margin: 0;
-            padding: 0;
-        }
+.option-btn.selected {
+    background-color: #cfe2ff;
+    border-color: #9ec5fe;
+    color: #004085;
+}
 
-        .category-btn {
-            background-color: #3498db;
-            color: white;
-            border: none;
-            padding: 16px 22px;
-            font-size: 1.15em;
-            border-radius: 6px;
-            cursor: pointer;
-            transition: background-color 0.3s ease, transform 0.2s ease;
-            width: 100%;
-            box-sizing: border-box;
-            text-align: center;
-        }
+.option-btn.correct {
+    background-color: #d4edda;
+    border-color: #c3e6cb;
+    color: #155724;
+    font-weight: bold;
+}
 
-        .category-btn:hover {
-            background-color: #2980b9;
-            transform: translateY(-2px);
-        }
+.option-btn.correct:hover {
+    background-color: #c3e6cb;
+}
 
-        /* --- Footer Styles --- */
-        footer {
-            background-color: #333;
-            color: #f1f1f1;
-            padding: 20px;
-            text-align: center;
-            width: 100%;
-            box-sizing: border-box;
-            margin-top: auto;
-        }
+.option-btn.incorrect {
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+    color: #721c24;
+    font-weight: bold;
+}
 
-        footer p {
-            margin: 8px 0;
-            font-size: 0.9em;
-        }
+.option-btn.incorrect:hover {
+    background-color: #f5c6cb;
+}
 
-        footer .back {
-            color: #87ceeb;
-            text-decoration: none;
-        }
+#options-container.answered .option-btn {
+    pointer-events: none;
+}
 
-        footer .back:hover {
-            text-decoration: underline;
-        }
+p#timer {
+    font-size: 1em;
+    color: #495057;
+    margin-bottom: 8px;
+}
 
-        /* --- Responsive Adjustments --- */
-        @media (max-width: 768px) {
-            .navbar {
-                /* justify-content: space-between; already set */
-            }
+.progress-container {
+    width: 100%;
+    background-color: #e9ecef;
+    border-radius: 25px;
+    height: 12px;
+    margin-bottom: 20px;
+    overflow: hidden;
+}
 
-            .hamburger-menu {
-                display: block;
-                /* Show hamburger on mobile */
-                order: 1;
-                /* Ensure it's on the right if .nav-menu was also displayed (but .nav-menu is hidden) */
-            }
+.progress-bar {
+    height: 100%;
+    width: 0%;
+    background-color: #28a745;
+    border-radius: 25px;
+    transition: width 0.2s linear;
+}
 
-            .nav-logo {
-                order: 0;
-            }
+p#score {
+    font-size: 1em;
+    color: #495057;
+    margin-top: 0;
+    margin-bottom: 30px;
+}
 
+.btn,
+#next-btn,
+#restart-quiz-btn,
+#view-top-scores-btn {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 6px;
+    font-size: 1em;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    text-align: center;
+    display: inline-block;
+    margin-right: 10px;
+}
 
-            /* Styles for .nav-menu (the wrapper) in mobile view */
-            .nav-menu {
-                display: none;
-                /* Hide menu by default on mobile */
-                position: absolute;
-                top: 100%;
-                /* Position below the navbar */
-                left: 0;
-                width: 100%;
-                background-color: #ffffff;
-                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-                flex-direction: column;
-                align-items: center;
-                /* Center items in the dropdown */
-                padding: 15px 0;
-                gap: 0;
-                /* Reset gap, manage spacing with padding on items */
-                z-index: 1000;
-                flex-grow: 0;
-                /* Reset flex-grow for mobile dropdown */
-                order: 2;
-                /* Ensure it's below logo and hamburger if they were flex items */
-            }
+#next-btn:last-child,
+#restart-quiz-btn:last-child,
+#view-top-scores-btn:last-child {
+    margin-right: 0;
+}
 
-            .nav-menu.open {
-                display: flex;
-                /* Show menu when hamburger is clicked */
-            }
+.btn:hover,
+#next-btn:hover,
+#restart-quiz-btn:hover,
+#view-top-scores-btn:hover {
+    background-color: #0056b3;
+}
 
-            /* Styles for .nav-links (child of .nav-menu) in mobile view */
-            .nav-menu .nav-links {
-                flex-direction: column;
-                align-items: center;
-                gap: 0;
-                /* Reset gap for vertical links */
-                width: 100%;
-                margin: 0;
-                /* Reset desktop centering margin */
-            }
+#next-btn:disabled {
+    background-color: #6c757d;
+    cursor: not-allowed;
+}
 
-            .nav-menu .nav-links li {
-                width: 100%;
-                text-align: center;
-            }
+#results-container h1 {
+    font-size: 1.8em;
+    color: #1e2a4c;
+    margin-bottom: 20px;
+}
 
-            .nav-menu .nav-links li a {
-                display: block;
-                padding: 12px 20px;
-                width: 100%;
-                box-sizing: border-box;
-            }
+#results-container p {
+    font-size: 1.1em;
+    margin-bottom: 15px;
+    line-height: 1.6;
+}
 
-            /* Styles for .nav-admin (child of .nav-menu) in mobile view */
-            .nav-menu .nav-admin {
-                margin-top: 10px;
-                margin-left: 0;
-                /* Reset desktop margin */
-                padding-bottom: 10px;
-                width: 100%;
-                display: flex;
-                justify-content: center;
-            }
+#final-score-display {
+    font-weight: bold;
+    color: #28a745;
+}
 
-            .nav-menu .btn-admin-nav {
-                display: inline-block;
-                width: auto;
-                padding: 12px 25px;
-                text-align: center;
-            }
+#scoreboard {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.07);
+    width: 100%;
+    max-width: 600px;
+    margin-top: 20px;
+}
 
-            #category-selection-view {
-                padding: 25px 20px;
-            }
+#scoreboard h2 {
+    text-align: center;
+    color: #1e2a4c;
+    margin-bottom: 15px;
+}
 
-            #category-selection-view h1 {
-                font-size: 2em;
-            }
+footer {
+    background-color: #333;
+    color: #f1f1f1;
+    padding: 20px;
+    text-align: center;
+    width: 100%;
+    box-sizing: border-box;
+    margin-top: auto;
+}
 
-            #category-selection-view h2 {
-                font-size: 1.3em;
-            }
+footer p {
+    margin: 8px 0;
+    font-size: 0.9em;
+}
 
-            .category-btn {
-                padding: 14px 18px;
-                font-size: 1.05em;
-            }
-        }
+footer .back {
+    color: #87ceeb;
+    text-decoration: none;
+}
 
-        @media (max-width: 480px) {
-            /* body {
-                            padding-top: 0; Removed as navbar is not fixed/sticky in this CSS
-                        } */
+footer .back:hover {
+    text-decoration: underline;
+}
 
-            .navbar {
-                padding: 10px 15px;
-            }
+.view {}
 
-            .nav-logo a {
-                font-size: 1.4em;
-            }
+.view.active {
+    display: block;
+}
 
-            /* Styles for links inside mobile menu at very small screens */
-            .nav-menu .nav-links li a {
-                font-size: 0.95em;
-            }
+@media (max-width: 768px) {
 
-            /* Styles for admin button inside mobile menu at very small screens */
-            .nav-menu .btn-admin-nav {
-                font-size: 0.9em;
-                padding: 9px 15px;
-            }
+    .hamburger-menu {
+        display: block;
+        order: 1;
+    }
 
-            /* #landing-page {
-                            padding: 0; Removed, let #category-selection-view handle its padding
-                        } */
+    .nav-logo {
+        order: 0;
+    }
 
-            #category-selection-view {
-                padding: 20px 15px;
-            }
+    .nav-menu {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: #ffffff;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        flex-direction: column;
+        align-items: center;
+        padding: 15px 0;
+        gap: 0;
+        z-index: 999;
+        flex-grow: 0;
+        order: 2;
+    }
 
-            #category-selection-view h1 {
-                font-size: 1.7em;
-            }
+    .nav-menu.open {
+        display: flex;
+    }
 
-            #category-selection-view h2 {
-                font-size: 1.15em;
-                margin-bottom: 25px;
-            }
+    .nav-menu .nav-links {
+        flex-direction: column;
+        align-items: center;
+        gap: 0;
+        width: 100%;
+        margin: 0;
+    }
 
-            .category-btn {
-                font-size: 1em;
-                padding: 12px 15px;
-            }
+    .nav-menu .nav-links li {
+        width: 100%;
+        text-align: center;
+    }
 
-            footer {
-                padding: 15px 10px;
-            }
+    .nav-menu .nav-links li a {
+        display: block;
+        padding: 12px 20px;
+        width: 100%;
+        box-sizing: border-box;
+    }
 
-            footer p {
-                font-size: 0.85em;
-            }
-        }
+    .nav-menu .nav-admin {
+        margin-top: 10px;
+        margin-left: 0;
+        padding-bottom: 10px;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+
+    .nav-menu .btn-admin-nav {
+        display: inline-block;
+        width: auto;
+        padding: 12px 25px;
+        text-align: center;
+    }
+
+    #quiz-container,
+    #results-container {
+        padding: 20px;
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+
+    h1#quiz-topic-display {
+        font-size: 1.3em;
+    }
+
+    h2#question-text {
+        font-size: 1.1em;
+    }
+
+    #options-container {
+        grid-template-columns: 1fr;
+    }
+
+    .option-btn {
+        font-size: 0.95em;
+        padding: 12px 15px;
+    }
+
+    .btn,
+    #next-btn,
+    #restart-quiz-btn,
+    #view-top-scores-btn {
+        padding: 10px 20px;
+        font-size: 0.95em;
+        width: auto;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 10px;
+    }
+
+    #results-container .btn:last-child {
+        margin-bottom: 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .navbar {
+        padding: 10px 15px;
+    }
+
+    .nav-logo a {
+        font-size: 1.4em;
+    }
+
+    .nav-menu .nav-links li a {
+        font-size: 0.95em;
+    }
+
+    .nav-menu .btn-admin-nav {
+        font-size: 0.9em;
+        padding: 9px 15px;
+    }
+
+    body {
+        padding: 5px 0 0 0;
+    }
+
+    main#quiz-page {
+        padding: 10px;
+    }
+
+    #quiz-container,
+    #results-container {
+        padding: 30px 40px;
+        width: 100%;
+        text-align: left;
+    }
+
+    h1#quiz-topic-display {
+        font-size: 1.2em;
+    }
+
+    h2#question-text {
+        font-size: 1em;
+    }
+
+    .option-btn {
+        font-size: 0.9em;
+        padding: 10px 12px;
+    }
+
+    .btn,
+    #next-btn,
+    #restart-quiz-btn,
+    #view-top-scores-btn {
+        font-size: 0.9em;
+        padding: 9px 18px;
+    }
+
+    footer {
+        padding: 15px 10px;
+    }
+
+    footer p {
+        font-size: 0.85em;
+    }
+}
+
