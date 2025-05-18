@@ -38,6 +38,7 @@ categoryCards.forEach((card) => {
     startBtn.disabled = false
   })
 })
+
 startBtn.onclick = () => {
   if (!selectedTopic) return alert('Please select a category.')
 
@@ -65,9 +66,8 @@ function loadQuestion() {
 
   const q = quizQuestions[currentQuestion]
   questionText.textContent = q.question
-  questionNumber.textContent = `Question ${currentQuestion + 1} of ${
-    quizQuestions.length
-  }`
+  questionNumber.textContent = `Question ${currentQuestion + 1} of ${quizQuestions.length
+    }`
   optionsContainer.innerHTML = ''
   nextBtn.disabled = true
 
@@ -93,9 +93,9 @@ function handleAnswer(button, selected) {
     scoreDisplay.textContent = `Score: ${score}`
   } else {
     button.style.backgroundColor = '#f8a1a1'
-    ;[...optionsContainer.children].find(
-      (btn) => btn.textContent === q.answer
-    ).style.backgroundColor = '#a8e6a1'
+      ;[...optionsContainer.children].find(
+        (btn) => btn.textContent === q.answer
+      ).style.backgroundColor = '#a8e6a1'
   }
 
   ;[...optionsContainer.children].forEach((btn) => (btn.disabled = true))
@@ -140,7 +140,7 @@ function autoFailQuestion() {
     (btn) => btn.textContent === q.answer
   )
   correctBtn.style.backgroundColor = '#a8e6a1'
-  ;[...optionsContainer.children].forEach((btn) => (btn.disabled = true))
+    ;[...optionsContainer.children].forEach((btn) => (btn.disabled = true))
   nextBtn.disabled = false
 }
 
@@ -209,9 +209,8 @@ function displayScoreboard() {
     entryElement.innerHTML = `
       <div>
         <span class="scoreboard-rank">${index + 1}.</span>
-        <span class="scoreboard-score">${entry.score}/${
-      entry.total
-    } (${percentage}%)</span>
+        <span class="scoreboard-score">${entry.score}/${entry.total
+      } (${percentage}%)</span>
       </div>
       <div class="scoreboard-topic">${entry.topic}</div>
     `
