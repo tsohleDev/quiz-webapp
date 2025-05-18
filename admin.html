@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin</title>
+  <link href="/src/asset/stylesheets/index.css" rel="stylesheet">
+  <link href="/src/asset/stylesheets/admin.css" rel="stylesheet">
+</head>
+
+<body>
+
+  <header>
+    <nav class="navbar">
+      <div class="nav-logo">
+        <a href="index.html">Logo</a> <!-- Placeholder for logo -->
+      </div>
+
+    <button class="hamburger-menu" aria-label="Toggle navigation menu" aria-expanded="false">
+      <span class="line"></span>
+      <span class="line"></span>
+      <span class="line"></span>
+    </button>
+    
+    <div class="nav-menu">
+      <ul class="nav-links">
+        <li><button class="category-button" data-categorykey="Web Development">Web Dev</button></li>
+        <li><button class="category-button" data-categorykey="Computer Fundamentals">Comp Fund</button></li>
+        <li><button class="category-button" data-categorykey="Programming Concepts">Prog Conc</button></li>
+      </ul>
+
+      <div class="nav-admin">
+        <button id="saveChangesBtn" class="btn-admin-nav" disabled>Done</button>
+        <a href="index.html" class="btn-admin-nav">User</a>
+      </div>
+    </div>
+    </nav>
+  </header>
+
+
+  <div class="questions-icon-container">
+    <div class="icon-container">
+      <img class="add-icon" src="src/asset/images/add.png">
+    </div>
+  </div>
+
+  <!-- Firebase SDKs -->
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+  <script type="module" src="src/admin/main.js"></script>
+</body>
+
+</html>

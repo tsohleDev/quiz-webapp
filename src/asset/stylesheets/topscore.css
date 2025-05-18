@@ -1,0 +1,201 @@
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #ffffff;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    box-sizing: border-box;
+}
+
+main#top-scores-page {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+#top-scores-view {
+    padding: 30px 40px;
+    border-radius: 0;
+    box-shadow: none;
+    width: 100%;
+    text-align: left;
+}
+
+#top-scores-view h1 {
+    color: #2c3e50;
+    margin-top: 0;
+    margin-bottom: 25px;
+    font-size: 2em;
+    text-align: center;
+}
+
+.score-filters {
+    margin-bottom: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+}
+
+.score-filters label {
+    font-size: 1em;
+    font-weight: 500;
+    color: #34495e;
+}
+
+.score-filters select#category-filter {
+    padding: 10px 12px;
+    font-size: 0.95em;
+    border-radius: 5px;
+    border: 1px solid #bdc3c7;
+    background-color: #fff;
+    width: 100%;
+    max-width: 300px;
+    box-sizing: border-box;
+}
+
+#scores-list-container {
+    margin-top: 20px;
+    text-align: center;
+}
+
+#scores-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.score-item {
+    background-color: #f8f9fa;
+    border: 1px solid #e9ecef;
+    padding: 20px 25px;
+    border-radius: 6px;
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    text-align: left;
+}
+
+.score-item .score-title {
+    font-size: 1.2em;
+    font-weight: 600;
+    color: #007bff;
+}
+
+.score-item .player-score {
+    font-size: 1.4em;
+    font-weight: bold;
+    color: #28a745;
+}
+
+.score-item .score-date {
+    font-size: 0.95em;
+    color: #6c757d;
+}
+
+#loading-scores-message,
+#no-scores-message {
+    font-size: 1.1em;
+    color: #555;
+    padding: 20px;
+    text-align: center;
+}
+
+#no-scores-message {
+    background-color: #fff3cd;
+    border: 1px solid #ffeeba;
+    color: #856404;
+    border-radius: 5px;
+}
+
+.error-message {
+    color: #721c24;
+    background-color: #f8d7da;
+    border: 1px solid #f5c6cb;
+    padding: 10px;
+    border-radius: 5px;
+    text-align: center;
+}
+
+@media (max-width: 768px) {
+    #top-scores-view {
+        padding: 25px 20px;
+    }
+
+    #top-scores-view h1 {
+        font-size: 1.8em;
+    }
+
+    .score-filters select#category-filter {
+        font-size: 0.9em;
+    }
+
+    .score-item {
+        padding: 15px 20px;
+    }
+
+    .score-item .score-title {
+        font-size: 1.1em;
+    }
+
+    .score-item .player-score {
+        font-size: 1.25em;
+    }
+}
+
+@media (max-width: 480px) {
+    #top-scores-view {
+        padding: 20px 15px;
+        margin-top: 15px;
+        margin-bottom: 15px;
+    }
+
+    #top-scores-view h1 {
+        font-size: 1.6em;
+        margin-bottom: 20px;
+    }
+
+    .score-filters {
+        margin-bottom: 20px;
+    }
+
+    .score-filters label {
+        font-size: 0.95em;
+    }
+
+    .score-filters select#category-filter {
+        padding: 8px 10px;
+    }
+
+    .score-item {
+        padding: 12px 15px;
+        gap: 8px;
+    }
+
+    .score-item .score-title {
+        font-size: 1em;
+    }
+
+    .score-item .player-score {
+        font-size: 1.15em;
+    }
+
+    .score-item .score-date {
+        font-size: 0.9em;
+    }
+
+    #loading-scores-message,
+    #no-scores-message {
+        font-size: 1em;
+        padding: 15px;
+    }
+}

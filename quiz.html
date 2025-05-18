@@ -4,29 +4,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tech Quiz - Select Category</title>
-    <link rel="stylesheet" href="quiz.css">
+    <title>Tech Quiz - In Progress</title>
+    <link rel="stylesheet" href="src/asset/stylesheets/index.css">
+    <link rel="stylesheet" href="src/asset/stylesheets/quiz.css">
 </head>
 
 <body>
     <header>
         <nav class="navbar">
             <div class="nav-logo">
-                <a href="index.html">
-                    <img src="asset/Image.jpg" alt="Tech Whiz Quiz Logo" class="logo" style="height:48px;">
-                </a>
+                <a href="index.html">Logo</a> <!-- Placeholder for logo -->
             </div>
-
             <button class="hamburger-menu" aria-label="Toggle navigation menu" aria-expanded="false">
                 <span class="line"></span>
                 <span class="line"></span>
                 <span class="line"></span>
             </button>
-
+          
             <div class="nav-menu">
                 <ul class="nav-links">
                     <li><a href="index.html">Home</a></li>
-                    <li><a href="quiz.html">Quiz</a></li>
+                    <li><a href="quiz.html" class="active">Quiz</a></li>
                     <li><a href="topscores.html">Top Score</a></li>
                 </ul>
                 <div class="nav-admin">
@@ -36,48 +34,39 @@
         </nav>
     </header>
 
-    <main id="landing-page">
-        <section id="category-selection-view" class="view active">
-            <h1>Tech Whiz Quiz</h1>
-            <h2>Choose a Category to Start</h2>
-            <div>
-                <ul id="category-list">
-                    <li><button class="category-btn" data-category="javascript">JavaScript Fundamentals</button></li>
-                    <li><button class="category-btn" data-category="html-css">HTML & CSS Basics</button></li>
-                    <li><button class="category-btn" data-category="git">Git & Version Control</button></li>
-                </ul>
+    <main id="quiz-page">
+        <div id="quiz-container" class="view">
+            <h1 id="quiz-topic-display">Quiz Topic</h1>
+            <div class="progress-container">
+                <div class="progress-bar"></div>
             </div>
-        </section>
+            <p id="question-number">Question X of Y</p>
+            <p id="timer">Time Left: 15s</p>
+            <h2 id="question-text">Question will appear here...</h2>
+            <div id="options-container">
+                <!-- Option buttons will be dynamically inserted here by JavaScript -->
+            </div>
+            <p id="score">Score: 0</p>
+            <button id="next-btn" class="btn">Next Question</button>
+        </div>
+    
+        <div id="results-container" class="view" style="display: none;">
+            <h1>Quiz Complete!</h1>
+            <p id="final-score-display">Your Final Score: 0/0</p>
+            <p id="final-message"></p>
+            <button id="restart-quiz-btn" class="btn">Play Another Category</button>
+            <button id="view-top-scores-btn" class="btn">View Top Scores</button>
+        </div>
     </main>
 
     <footer>
         <p><a href="index.html" class="back">Back to Home</a></p>
         <p>© 2024 Tech Quiz App</p>
     </footer>
-    <script>
-        const hamburgerMenu = document.querySelector('.hamburger-menu');
-        const navMenu = document.querySelector('.nav-menu');
 
-        if (hamburgerMenu && navMenu) {
-            hamburgerMenu.addEventListener('click', () => {
-                navMenu.classList.toggle('open');
-                const isOpen = navMenu.classList.contains('open');
-                hamburgerMenu.setAttribute('aria-expanded', isOpen.toString());
-                hamburgerMenu.classList.toggle('open', isOpen);
-            });
-        } else {
-            console.error("Hamburger menu or nav menu container not found!");
-        }
-
-        const categoryButtons = document.querySelectorAll('.category-btn');
-        categoryButtons.forEach(button => {
-            button.addEventListener('click', () => {
-                const category = button.dataset.category;
-                localStorage.setItem('selectedQuizCategory', category);
-                window.location.href = 'quiz.html';
-            });
-        });
-    </script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+    <script type="module" src="src/quiz/game.js"></script>
 </body>
 
 </html>
