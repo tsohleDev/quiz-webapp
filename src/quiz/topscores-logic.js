@@ -114,24 +114,34 @@ function renderUserTopScore(scoreEntry, categoryContext) {
     if (!scoresListUl) return;
     scoresListUl.innerHTML = ''; // Clear again, ensuring only one item is shown
 
+    // Get stored username from localStorage (key used in your quiz start code)
+    const username = localStorage.getItem('quizUsername') || 'Player';
+
     const listItem = document.createElement('li');
     listItem.classList.add('score-item'); // Reusing class, can be styled for a single prominent item
 
-    // You might want a more descriptive label than just the name/score
+    // Title
     const titleSpan = document.createElement('span');
     titleSpan.classList.add('score-title'); // New class for styling
     titleSpan.textContent = `Your Top Score in ${scoreEntry.category || categoryContext}:`;
     listItem.appendChild(titleSpan);
 
+    // Username display
+    const usernameSpan = document.createElement('span');
+    usernameSpan.classList.add('player-name');
+    usernameSpan.textContent = `Player: ${username}`;
+    listItem.appendChild(usernameSpan);
 
+    // Score display
     const scoreValSpan = document.createElement('span');
     scoreValSpan.classList.add('player-score');
     scoreValSpan.textContent = `Score: ${scoreEntry.score}`; // Adding "Score: " prefix
     listItem.appendChild(scoreValSpan);
 
+    // Date display
     const dateSpan = document.createElement('span');
     dateSpan.classList.add('score-date');
-    if (scoreEntry.timestamp && scoreEntry.timestamp.toDate) { // Check if it's a Firebase Timestamp
+    if (scoreEntry.timestamp && scoreEntry.timestamp.toDate) { // Firebase Timestamp check
         dateSpan.textContent = `Date: ${scoreEntry.timestamp.toDate().toLocaleDateString()}`;
     } else if (scoreEntry.timestamp) {
         dateSpan.textContent = `Date: ${new Date(scoreEntry.timestamp).toLocaleDateString()}`;
@@ -139,5 +149,6 @@ function renderUserTopScore(scoreEntry, categoryContext) {
         dateSpan.textContent = 'Date: N/A';
     }
     listItem.appendChild(dateSpan);
+
     scoresListUl.appendChild(listItem);
 }
