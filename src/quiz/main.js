@@ -12,8 +12,8 @@ document.addEventListener("DOMContentLoaded", () => {
   // Map simple keys to actual category names
   const categoryMap = {
     "javascript": "Web Development",
-    "html-css": "HTML & CSS",
-    "git": "Git",
+    "html-css": "Computer Fundamentals",
+    "git": "Programming Concepts",
     // add other mappings as needed
   };
 
